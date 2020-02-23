@@ -24,6 +24,6 @@ if systemctl status tor > /dev/null; then
 	PRECMD="torsocks"
 fi
 
-${PRECMD} curl -K "${DIR}/${1}.conf" -D cmurl-${1}-${TS}-headers.txt -o cmurl-${1}-${TS}-payload.bin ${3} "${2}"
+${PRECMD} curl -K "${DIR}/${1}.conf" -D cmurl-${1}-${TS}-headers.txt -o cmurl-${1}-${TS}-payload.bin ${3} "${2}" 2> >(tee cmurl-${1}-${TS}-log.txt)
 
 
